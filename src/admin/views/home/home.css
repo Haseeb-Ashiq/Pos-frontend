@@ -1,0 +1,71 @@
+.home-container{
+    max-height:100vh;
+    max-width:100vw;
+    overflow-y: scroll;
+    /* border:1px solid black; */
+}
+.panel{
+    max-height:30%;
+    width:100%;
+    border-bottom:1px solid black;
+    margin:10px auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+.panel .panel-tabs{
+    height:200px;
+    width:350px;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255,0.45); 
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0,0.5),
+    -1px -1px 1px 1px rgba(0, 0, 0,0.5);
+    /* border:1px solid black; */
+    margin:10px 20px;
+    display: flex;
+    flex-wrap:wrap;
+}
+.panel-tabs .icon-box,.panel-tabs .text-box{
+    height:100%;
+    width:50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color:whitesmoke;
+    /* border:1px solid black; */
+}
+.icon-box .icon-size{
+    font-size: 100px;
+}
+.color-primary{
+    background-color: blueviolet;
+}
+.color-scandary{
+    background-color: brown;
+}
+/* charts sections */
+
+.charts{
+    max-height:50%;
+    max-width: 100%;
+display: flex;
+flex-direction: row;
+margin:10px auto;
+}
+.bar-chart{
+    height:50%;
+    width:60%;
+}
+.pie-chart{
+    height:50%;
+    width:40%;
+    /* border:1px solid black; */
+    margin:0 10px;
+}
+
+/* order section */
+.order-section{
+    max-height:30%;
+    max-width:100%;
+    border-top:1px solid black;
+}

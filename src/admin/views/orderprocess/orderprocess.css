@@ -1,0 +1,89 @@
+.order-process-container{
+    min-height: 100vh;
+    max-width:100vw;
+    border:1px solid #2E0249;
+}
+.order-process-panel{
+    min-height: 90vh;
+    max-width:90vw;
+    border:1px solid #2E0249;
+    margin:0 auto;
+    display: flex;
+    flex-direction: column;
+}
+.btn-back-order{
+    margin:10px 80px;
+}
+.order-process-header{
+    min-height:20%;
+    width:100%;
+    border-bottom: 1px solid black;
+    /* background: #DF7861; */
+    background-color: #2E0249;
+    display: block;
+}
+.date-recieve-info{
+    margin:20px 20px;
+    color:white;
+}
+.date-recieve-info .order-id{
+    margin:5px 20px;
+}
+.date-recieve-info .date span{
+margin-top:-5px;
+}
+
+.order-process-body-panel{
+    height:30vh;
+    width: 100%;
+    border-bottom:1px solid black;
+    display: flex;
+    
+}
+.order-process-body-panel-box{
+    max-height:100%;
+    width:90%;
+    margin:0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+.order-process-body-panel-box .order-info{
+    height:100%;
+    width:calc( 95% / 3);
+    border:1px solid black;
+    margin:0 auto;
+}
+.order-process-item-panel{
+    height:90%;
+    width:90%;
+    border-top:1px solid black;
+    margin:5px auto;
+    display: flex;
+}
+.order-process-items{
+    max-height:50vh;
+    width:80%;
+    overflow-y: scroll;
+    border-right:1px solid black;
+}
+.delivered-btn-box{
+    height:100%;
+    width:20%;
+    border:1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.order-btn-box{
+    height:50px;
+    width:200px;
+    margin:50px auto;
+    border:1px solid black;
+}
+#mark-deliver-btn{
+    height: 45px;
+    width:200px;
+    background-color: #2E0249;
+    margin:2px auto;
+}
