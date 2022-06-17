@@ -6,8 +6,6 @@ import React, { useState } from "react";
 import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
 import {Link} from 'react-router-dom';
 import './orderprocess.css';
-import CustomBarChart from "../../components/customchart/barchart";
-import CustomLineChart from "../../components/customchart/linechart";
 const OrderProcess=()=>{
     const [activeStep,setActiveStep]=useState(0);
     const steps = [
@@ -159,8 +157,6 @@ const OrderProcess=()=>{
 
  </div>
 
-<CustomBarChart/>
-<CustomLineChart/>
     <Stepper activeStep={activeStep}>
        {
            steps.map(lbl=> (<><Step><StepLabel>{lbl.stp}</StepLabel></Step></>))

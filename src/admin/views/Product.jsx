@@ -175,7 +175,7 @@ const handleProductSearch=e=>{
                </select>
            </Grid>
            <Grid item xs={12}>
-               <TextField multiline style={{width:'100%'}} variant='outlined' label='Description'/>
+               <TextField multiline value={description} onChange={(e)=>setDescription(e.target.value)} style={{width:'100%'}} variant='outlined' label='Description'/>
            </Grid>
            <Grid item xs={6} md={6}>
                <input type="file" multiple onChange={uploadFile}/>

@@ -20,7 +20,7 @@ const ProductReducer=(state=initial,action)=>{
             case FETCH_PRODUCTS_SUCCESS:
                 return {
                     ...state,
-                    products:[...action.payload._pro],
+                    products:[...action.payload._pro].reverse(),
                 }
        case GET_PRODUCT_SUCCESS:
            console.log(action.payload._pro)

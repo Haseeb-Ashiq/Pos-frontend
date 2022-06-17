@@ -30,6 +30,14 @@ const GetOrder=async (order_no)=>{
     return await axios.get(`http://localhost:5000/api/cart/getorder/${order_no}`)
     .then(res=>res.data);
 }
+const ClientSignup=async (data)=>{
+    return await axios.post('http://localhost:5000/api/client/register',data)
+    .then(res=>res.data)
+}
+const ClientLogin=async (user)=>{
+    return await axios.post('http://localhost:5000/api/client/login',user)
+    .then(res=>res.data);
+}
 return {
     GetAllCatagory,
     GetAllProducts,
@@ -37,7 +45,9 @@ return {
     SaveProduct,
     AddOrder,
     GetOrders,
-    GetOrder
+    GetOrder,
+    ClientSignup,
+    ClientLogin
     
 }
 }

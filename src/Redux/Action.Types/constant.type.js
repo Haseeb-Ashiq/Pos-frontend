@@ -22,3 +22,10 @@ export const ADD_ORDER='ADD_ORDER';
 export const ADD_ORDER_SUCCESS='ADD_ORDER_SUCCESS';
 export const GET_ORDER='GET_ORDER';
 export const GET_ORDER_SUCCESS='GET_ORDER_SUCCESS';
+
+// online Clients
+
+export const SIGNUP='SIGNUP';
+export const SIGNUP_SUCCESS='SIGNUP_SUCCESS';
+export const LOGIN='LOGIN';
+export const LOGIN_SUCCESS='LOGIN_SUCCESS';
