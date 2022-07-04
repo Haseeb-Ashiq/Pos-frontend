@@ -137,7 +137,7 @@ export const SubMenu=styled.div`
 position:absolute;
 top:0;
 margin:80px auto;
-height: 200px;
+height: 150px;
 width:200px;
 border:1px solid whitesmoke;
 background-color: rgba(255,255,255,0.7);
@@ -147,10 +147,10 @@ border-bottom-left-radius: 5px;
 border-bottom-right-radius: 5px;
 `;
 export const SubMenuInner=styled.div`
-display: grid;
-grid-template-columns: 1fr;
-grid-template-rows: repeat(3,50px);
-gap: 0 0;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
 height:100%;
 width:100%;
 padding: 0;
@@ -160,10 +160,12 @@ margin:0;
 export const MenuItemLink=styled(Link)`
 width:100%;
 height:50px;
+display: flex;
+flex-direction: column;
 align-items: center;
 justify-content: center;
 font-size: large;
-margin:10px 0;
+/* margin:10px 0; */
 list-style: none;
 text-decoration: none;
 color:#e31837;
@@ -192,20 +194,19 @@ text-align:center;
 `;
 export const CartItemMenu=styled.div`
 position:absolute;
-height:${(props)=>props.isCartOpen ? '300px' : '0px'};
+height:300px;
 width:350px;
 display: flex;
 flex-direction: column;
 justify-content: space-between;
 background-color: white;
-right:40px;
-top:80px;
+top:${(props)=>props.isCartOpen ? '80px;' : '-400px'};
+margin:0 -150px;
 transition: all .8s ease-in-out;
 `;
 export const CartItemMenuOne=styled.div`
-max-height: 90%;
+max-height: 270px;
 width:100%;
-/* background-color: green; */
 overflow-y: auto;
 overflow-x: hidden;
 &::-webkit-scrollbar{
@@ -220,7 +221,7 @@ overflow-x: hidden;
 }
 `;
 export const CartItemMenuTwo=styled.div`
-height:10%;
+min-height:30px;
 width:100%;
 display: flex;
 border:1px solid whitesmoke;

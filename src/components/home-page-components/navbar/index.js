@@ -62,14 +62,14 @@ const combineMethodCall2=(a,b)=>{
                       onClick={()=>combineMethodCall2(setIsCartOpen,setIsMenuOpen)}/>
                        <SubMenu isMenuOpen={isMenuOpen}>
                           <SubMenuInner>
-                          <MenuItemLink to={'/user-home'}>User Panel</MenuItemLink>
-                            <MenuItemLink to={'/user-admin'}><UserIcon/>Profile</MenuItemLink>
+                          <MenuItemLink to={'/user-home'}><span>User Panel</span></MenuItemLink>
+                            <MenuItemLink to={'/user-profile'}>Profile</MenuItemLink>
                             <MenuItemLink to={'/user-admin'}>Logout</MenuItemLink>
                             </SubMenuInner> 
                           </SubMenu></> 
                           :
                            <NavbarLink 
-                           to={'/user-admin'}>
+                           to={''}>
                              <UserIcon/>
                              </NavbarLink>
                    }
