@@ -26,6 +26,10 @@ transition:.2s ease-in;
     box-shadow:8px 8px 3px 3px #fdc500,
 -8px -8px 3px 3px rgba(255,255,255,0.5);
 }
+@media screen and (max-width:500px)
+{
+    width: 100%;
+}
 `;
 
 export const PictureSide=styled.div`
