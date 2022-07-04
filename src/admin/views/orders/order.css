@@ -1,4 +1,8 @@
 .order-container{
     max-height: 100vh;
-    overflow-y: scroll;
+    overflow-y: auto;
+}
+.inner-table-container{
+    max-width:70vw;
+    margin:10px auto;
 }

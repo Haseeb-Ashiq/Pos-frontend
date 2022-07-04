@@ -8,12 +8,12 @@ const ProductCard=(props)=>{
                   <div className="card-head">
                       <div className="btn-operation" style={{position:"absolute",right:'0'}}>
                       <ModeEditOutlineOutlinedIcon
-                      onClick={()=>alert(props._product._id)} 
+                      onClick={()=>props._editProducts(props._product._id)} 
                       style={{cursor:"pointer"}} 
                       color='primary'/> 
 
                       <DeleteOutlineOutlinedIcon 
-                      onClick={()=>alert(props._product._id)}
+                      onClick={()=>props.deleteProducts(props._product._id)}
                       style={{cursor:"pointer"}}
                        color='error'/>
                       </div>

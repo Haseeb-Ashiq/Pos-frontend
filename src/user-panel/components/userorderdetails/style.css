@@ -1,0 +1,10 @@
+.step-one-width{
+    width:457px;
+    height:5px;
+    transition: all .8s ease-in;
+}
+.step-two-width{
+    width:457px;
+    height:5px;
+    transition:all .8s ease-in;
+}

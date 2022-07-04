@@ -8,16 +8,16 @@ HeroItems,
 HeroP,
 HeroBtn
 } from './HeroElement'
-
-function HeroSection() {
-    const [isOpen,setIsOpen]=useState(false);
-    const toggle=()=>{
-        setIsOpen(!isOpen);
-        console.log(isOpen)
-    }
+function HeroSection({isLogedIn}) {
+   const [isOpen,setIsOpen]=useState(false);
+  const toggle=()=>{
+      setIsOpen(!isOpen);
+  }
   return (
+      <>
+      <div style={{position:'relative'}}>
            <HeroContainer>
-               <Navbar toggle={toggle}/>
+           <Navbar toggle={toggle} isLogedIn={isLogedIn}/>
                <Sidebar isOpen={isOpen} toggle={toggle}/>
                <HeroContent>
                    <HeroItems>
@@ -27,6 +27,8 @@ function HeroSection() {
                    </HeroItems>
                </HeroContent>
            </HeroContainer>
+           </div>
+      </>
   )
 }
 

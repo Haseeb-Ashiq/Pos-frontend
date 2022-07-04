@@ -48,9 +48,11 @@ const handleClose = (event, reason) => {
       const cartData={
           customer,
           orderNo,
-          cartItems:cart.cart
+          cartItems:cart.cart.map(item=>{
+              return {_id:item._id,name:item.name,img:item.productPictures[0].img,qtys:item.qtys,price:item.price}
+          })
       }
-      console.log(cartData);
+      console.log({cartData,cart:cart.cart});
      cartData && dispatch(addOrder(cartData));
   }
   const combineFun=(a,b)=>{

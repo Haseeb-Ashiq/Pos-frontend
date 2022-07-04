@@ -1,10 +1,12 @@
-import { ADD_CART_SUCCESS, ADD_ORDER_SUCCESS, DECREAMENT_ITEM_SUCCESS, GET_ORDER_SUCCESS, INCREAMENT_ITEM, INCREAMENT_ITEM_SUCCESS, REMOVE_CART, REMOVE_ITEM_SUCCESS } from "../Action.Types/constant.type"
+import { ADD_CART_SUCCESS, ADD_ORDER_SUCCESS, DECREAMENT_ITEM_SUCCESS, GET_ORDER_SUCCESS, INCREAMENT_ITEM, INCREAMENT_ITEM_SUCCESS, ORDER_STATUS_SUCCESS, REMOVE_CART, REMOVE_ITEM_SUCCESS } from "../Action.Types/constant.type"
 
 const initial={
     cart:[],
     totalPrice:0,
     isOrderSaved:false,
-    orders:[]
+    orders:[],
+    isQtyHigh:false,
+    isOrderUpdated:false
 }
 
 const CartReducer=(state=initial,action)=>{
@@ -32,18 +34,36 @@ switch(action.type)
                 cart:state.cart.filter(item=>item._id!==action.payload),
             }
             case INCREAMENT_ITEM_SUCCESS:
-                const indexItem=state.cart.findIndex(_index=>_index._id==action.payload);
-                const remainItem=state.cart.filter(item=>item._id!=action.payload);
-                    return{
+                const Item_Index=state.cart.findIndex(_index=>_index._id==action.payload._id);
+               let newArray=[];
+               for (const c in state.cart) {
+                   if(state.cart[c]._id===action.payload._id)
+                   {
+                       newArray.push(state.cart[c]={...action.payload,qtys:action.payload.qtys+=1});
+                   }
+                   else{
+                       newArray.push(state.cart[c]);
+                   }
+               }
+                return{
                         ...state,
-                        cart: [...remainItem,{...state.cart[indexItem],qtys:state.cart[indexItem].qtys+1}],
+                        cart:newArray
                  }
                 case DECREAMENT_ITEM_SUCCESS:
-                    const dec_indexItem=state.cart.findIndex(item=>item._id==action.payload);
-                    const dec_remain=state.cart.filter(item=>item._id!=action.payload);
+                    const dec_ItemIndex=state.cart.findIndex(item=>item._id==action.payload._id);
+                    let dec_array=[];
+                    for (const c in state.cart) {
+                       if(state.cart[c]._id===action.payload._id)
+                       {
+                           dec_array.push(state.cart[c]={...action.payload,qtys:action.payload.qtys-1});
+                       }
+                       else{
+                           dec_array.push(state.cart[c]);
+                       }
+                    }
                     return {
                              ...state,
-                             cart:[...dec_remain,{...state.cart[dec_indexItem],qtys:state.cart[dec_indexItem].qtys-1}]
+                              cart:dec_array[dec_ItemIndex].qtys < 1 ? dec_array.filter(i=>i._id!==action.payload._id) : dec_array
                     }
                     case REMOVE_CART:
                         return {
@@ -60,6 +80,24 @@ switch(action.type)
                                     ...state,
                                     orders:[...action.payload]
                                 }
+                                case ORDER_STATUS_SUCCESS:
+                                    let newOrderArr=[];
+                                    console.log('from order status',action.payload)
+                                    const order_index=state.orders.findIndex(i=>i._id===action.payload._id);
+                                    for (const o in state.orders) {
+                                        if(state.orders[o]._id===action.payload._id)
+                                        {
+                                            newOrderArr.push(state.orders[o]={...action.payload,status:action.payload.status})
+                                        }
+                                        else{
+                                            newOrderArr.push(state.orders[o]);
+                                        }
+                                    }
+                                    return {
+                                        ...state,
+                                        orders:newOrderArr,
+                                        isOrderUpdated:true
+                                    }
 
     default:
         return state;

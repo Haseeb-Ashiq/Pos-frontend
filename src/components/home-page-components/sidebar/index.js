@@ -8,6 +8,7 @@ import {
     SideBtnWrap,
     SidebarRoute
 } from './SidebarElements';
+import { FaPizzaSlice ,FaShoppingCart ,FaUserCircle} from 'react-icons/fa';
 function Sidebar({isOpen,toggle}) {
   return (
     <>
@@ -18,9 +19,10 @@ function Sidebar({isOpen,toggle}) {
             </CloseIcon>
         </Icon>
         <SidebarMenu>
-            <SidebarLink to={'/products'}>Pizza</SidebarLink>
-            <SidebarLink to={'/products'}>Burger</SidebarLink>
-            <SidebarLink to={'/products'}>Shawarma</SidebarLink>
+            <SidebarLink to={'/products'}>&#127829; Pizza</SidebarLink>
+            <SidebarLink to={'/products'}>&#127828; Burger</SidebarLink>
+            <SidebarLink to={'/products'}>&#127790; Shawarma</SidebarLink>
+            <SidebarLink to={'/products'}>&#127839; Fries</SidebarLink>
         </SidebarMenu>
         <SideBtnWrap>
             <SidebarRoute to={'/admin-home'}>Order now</SidebarRoute>

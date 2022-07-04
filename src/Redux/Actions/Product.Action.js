@@ -22,9 +22,9 @@ export const deleteProduct=(id)=>{
         payload:id
     }
 }
-export const updateProduct=(id,product)=>{
+export const updateProduct=(obj)=>{
     return {
         type:UPDATE_PRODUCT,
-        payload:{id,product}
+        payload:obj
     }
 }

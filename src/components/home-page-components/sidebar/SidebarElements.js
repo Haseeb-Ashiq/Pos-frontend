@@ -36,7 +36,7 @@ outline:none;
 export const SidebarMenu=styled.div`
 display:grid;
 grid-template-columns:1fr;
-grid-template-rows;repeat(3,80px);
+grid-template-rows:repeat(3,80px);
 text-align:center;
 @media screen and (max-width:480px){
     grid-template-rows:repeat(3,60px);
@@ -51,7 +51,7 @@ justify-content:center;
 font-size:1.5rem;
 text-decoration:none;
 list-style:none;
-trasition:.2s ease-in-out;
+transition:.2s ease-in-out;
 color:#000;
 cursor:pointer;
 &:hover{
@@ -63,7 +63,7 @@ cursor:pointer;
 export const SideBtnWrap=styled.div`
 display:flex;
 flex-direction:column;
-justitfy-content:center;
+justify-content:center;
 // align-items:center;
 `;
 

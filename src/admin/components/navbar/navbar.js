@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './navbar.css';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 const Navbar=()=>{
+    useEffect(()=>{
+        
+    },[])
     return (<>
     <div className='nav-container'>
         <div className='pic-portion'>
@@ -17,6 +20,7 @@ const Navbar=()=>{
              <ul>
                  <li className='active'><Link to={'/'} >Home</Link></li>
                  <li><Link to={'/products'}>Products</Link></li>
+                 <li><Link to={'/users'}>Users</Link></li>
                  <li><Link to={'/orders'}>Orders</Link></li>
                  <li><Link to={'/pos'}>POS</Link></li>
 

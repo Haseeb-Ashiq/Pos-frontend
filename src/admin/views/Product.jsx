@@ -1,62 +1,36 @@
-import { Button, Dialog,DialogContent, DialogTitle, 
-    Grid, 
-    MenuItem, 
-    Select, 
+import { Button, Dialog,DialogContent, DialogTitle,
     Table, TableBody, TableCell, TableContainer, TableHead, TableRow,
      TextField } from '@mui/material';
+     import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import React, { useEffect, useState } from 'react';
 import { useSelector ,useDispatch} from 'react-redux';
-import { fetchProducts, saveProduct } from '../../Redux/Actions/Product.Action';
+import { deleteProduct, fetchProducts} from '../../Redux/Actions/Product.Action';
 import './adminStyle.css';
 import GridOnIcon from '@mui/icons-material/GridOn';
 import TocOutlinedIcon from '@mui/icons-material/TocOutlined';
-import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import ProductCard from '../components/productscard/productcard';
 import ProductTableData from '../components/producttable/ProductTable';
 import Layout from '../components/layout/Layout';
+import ProductSave from '../components/productscard/ProductSave';
+import ProductEdit from '../components/productscard/ProductEdit';
 // import ProductTableData from '../components/producttable/ProductTableData';
 const Product=()=>{
     const dispatch=useDispatch();
-const catagories=useSelector(state=>state.Catagory);
 const product=useSelector(state=>state.Product);
-const [name,setName] = useState('');
-const [price,setPrice]=useState('');
-const [qty,setQty]=useState('');
-const [catagory,setCatagory]=useState('');
-const [description,setDescription]=useState('');
-const [file,setFile]=useState([]);
-const [imgUpload,setImgUpload]=useState([]);
 const [gridView,setGridView]=useState(true);
 const [openForm,setOpenForm]=useState(false);
+const [formMode,setFormMode]=useState(true);
+const [editData,setEditData]=useState('');
 const [val,setVal] = useState('');
 const [pro,setPro] = useState([]);
 useEffect(()=>{
   dispatch(fetchProducts());
 },[])
-const submitProductFormData=(event)=>{
-    event.preventDefault();
-    setOpenForm(false);
-    const form=new FormData();
-    form.append('name',name);
-    form.append('price',price);
-    form.append('description',description);
-    form.append('slug',name);
-    form.append('qty',qty);
-    form.append('catagory',catagory);
-    for(let pic of file)
-    {
-        console.log(pic)
-        form.append('myImage',pic);
-    }
-    // file.forEach(p=>console.log(p))
-    dispatch(saveProduct(form));
-}
-const uploadFile=(e)=>{
-    setImgUpload(Array.from(e.target.files).map((f,_index)=> (URL.createObjectURL(f))))
-    setFile([...e.target.files])
-}
+
 const handleProductSearch=e=>{
     setVal(e.target.value);
+    if(val!=='')
+    {
     const searchedList=product.products.filter(p=>{
         return Object.values(p)
         .join(" ")
@@ -65,9 +39,30 @@ const handleProductSearch=e=>{
     })
     setPro(searchedList);
 }
-// const handleProductView=()=>{
+else{
+    setPro(product.products);
+}
     
-// }
+}
+
+const addOpenDialogue=()=>{
+    setFormMode(true);
+    setOpenForm(true);
+}
+
+const deleteProducts=(id)=>{
+    dispatch(deleteProduct(id));
+}
+
+const _editProducts=(id)=>{
+   setEditData(product.products.find((pro,_index)=>pro._id===id));
+  setFormMode(false);
+  setOpenForm(true);
+}
+
+const dialogueFormClose=()=>{
+    setOpenForm(false)
+}
 
     return (<>
 <Layout>
@@ -79,7 +74,7 @@ const handleProductSearch=e=>{
          <div className="product-view">
              <div className="action-btn-group">
              <Button
-             onClick={()=>setOpenForm(true)}
+             onClick={addOpenDialogue}
               variant="contained" 
              color="primary"><AddBoxOutlinedIcon/> Add Product</Button>
              </div>
@@ -100,15 +95,15 @@ const handleProductSearch=e=>{
             gridView ? 
             <div className="admin-product-cards">
         {
-            pro.length > 0 ? pro.map(_pro=> <ProductCard _product={_pro}/>)
+            pro.length > 0 ? pro.map(_pro=> <ProductCard _product={_pro} deleteProducts={deleteProducts} _editProducts={_editProducts}/>)
             :
-            product.products && product.products.map(pro=> <ProductCard _product={pro}/>)
+            product.products && product.products.map(pro=> <ProductCard _product={pro} deleteProducts={deleteProducts} _editProducts={_editProducts}/>)
         }
         </div>
         :
         
         
-          <TableContainer>
+          <TableContainer style={{width:'90%',margin:'10px auto',background:'white',border:'1px solid black'}}>
           <Table>
                   <TableHead>
                       <TableRow color="primary">
@@ -125,14 +120,6 @@ const handleProductSearch=e=>{
                       {
                           product.products && product.products.map((_product,_index)=>(<>
                          <ProductTableData _product={_product} _index={_index}/>
-                          {/* <TableRow>
-                              <TableCell>{++_index}</TableCell>
-                              <TableCell><img src={`http://localhost:5000/public/${_product.productPictures[0].img}`} style={{height:"50px",width:"50px"}}/></TableCell>
-                              <TableCell>{_product.name}</TableCell>
-                              <TableCell>{_product.qty}</TableCell>
-                              <TableCell>{_product.price}</TableCell>
-                              <TableCell>{" "}</TableCell>
-                          </TableRow> */}
                           </>))
                       }
                   </TableBody>
@@ -147,57 +134,13 @@ const handleProductSearch=e=>{
     </div>
 </div>
 
-<Dialog open={openForm} onClose={()=>setOpenForm(false)}>
-<DialogTitle>Add Product Form</DialogTitle>
-    <DialogContent>
-        <form onSubmit={submitProductFormData} encType="multipart/form-data">
-       <Grid container spacing={1}>
-           <Grid item xs={6} md={6}>
-              <TextField value={name} onChange={(e)=>setName(e.target.value)} variant={'outlined'} label={'Product name'}/>
-           </Grid>
-           <Grid item xs={6} md={6}>
-           <TextField type="number" value={price} onChange={(e)=>setPrice(e.target.value)} variant={'outlined'} label={'Price'}/>
-           </Grid>
-           <Grid item xs={6} md={6}>
-               <TextField type="number" value={qty} onChange={(e)=>setQty(e.target.value)} variant={'outlined'} label={'Quantity'}/>
-           </Grid>
-          
-           <Grid item xs={6} md={6}>
-               <select value={catagory} onChange={(e)=>setCatagory(e.target.value)} variant={'outlined'} label='-select catagory-'>
-                   {
-                
-                catagories.catagory.map(cata=>(
-                    <>
-                    <option value={cata._id}>{cata.name}</option>
-                    </>
-                ))
-            }
-               </select>
-           </Grid>
-           <Grid item xs={12}>
-               <TextField multiline value={description} onChange={(e)=>setDescription(e.target.value)} style={{width:'100%'}} variant='outlined' label='Description'/>
-           </Grid>
-           <Grid item xs={6} md={6}>
-               <input type="file" multiple onChange={uploadFile}/>
-           </Grid>
-
-<Grid item xs={2} md={2}>
-    <Button variant={'contained'} type='submit' color={'primary'}><AddBoxOutlinedIcon/> Save</Button>
-</Grid>
-<Grid item xs={12}>
-    <div style={{display:"flex",flexWrap:"wrap"}}>
-{ imgUpload.map(i=> (
-          <>
-          <div>
-          <button style={{background:"red",color:'white'}} onClick={()=>setImgUpload(imgUpload.filter(images=> i!=images))}>X</button>
-          <img src={i} style={{height:'70px',width:'70px',margin:'10px 10px'}}/>
-          </div>
-          </>
-          )) }
-          </div>
-</Grid>
-       </Grid>
-       </form>
+<Dialog open={openForm} onClose={dialogueFormClose} maxWidth={'md'}>
+<DialogTitle style={{display:'flex',justifyContent:'space-between'}}><><p>{formMode ? <>Add Product Form</> : <>Edit Product Form</>}</p> <Button style={{height:'40px'}} size={'small'} variant={'contained'} color={'error'} onClick={()=>setOpenForm(false)}>X</Button></></DialogTitle>
+    <DialogContent dividers>
+        {
+            formMode ?  <ProductSave/> : <ProductEdit _editData={editData} dialogueFormClose={dialogueFormClose}/>
+        }
+     
     </DialogContent>
 </Dialog>
 </Layout>

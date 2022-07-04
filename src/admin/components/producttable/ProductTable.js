@@ -12,7 +12,7 @@ const ProductTableData=(props)=>{
                               <TableCell>{props._product.name}</TableCell>
                               <TableCell>{props._product.qty}</TableCell>
                               <TableCell>{props._product.price}</TableCell>
-                              <TableCell>{" "}</TableCell>
+                              <TableCell>{props._product.catagory.name}</TableCell>
                           </TableRow>
     </>)
 }
