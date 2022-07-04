@@ -37,7 +37,6 @@ display: flex;
 justify-content: center;
 align-items:center ;
 padding-right: 50px;
-border:1px solid black;
 @media screen and (max-width:800px)
 {
     flex:50%;
