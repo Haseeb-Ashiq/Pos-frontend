@@ -20,7 +20,7 @@ const ProductCard=(props)=>{
                   
                   </div>
                   <div className="card-body">
-                      <img src={`http://localhost:5000/public/${props._product.productPictures[0].img}`} alt="" />
+                      <img src={`https://food-deliver-apis.herokuapp.com/public/${props._product.productPictures[0].img}`} alt="" />
                   </div>
                   <div className="card-footer">
                       <p>Name: <span>{props._product.name}</span></p>

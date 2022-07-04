@@ -41,7 +41,7 @@ function App() {
           <Route exact path='/order-place' element={<OrderPlace isLogedIn={client.isLogedIn}/>}/>
           <Route exact path='/user-login' element={client.isLogedIn ? <Navigate to={'/'}/> : <Login/>}/>
           <Route exact path='/user-signup' element={client.isRegistered ? <Navigate to={'/user-login'}/> : <Signup/>} />
-          <Route exact path={'/user-home'} element={ userStatus ? <UserHome userStatus={userStatus} userRecord={userRecord} /> : <Login/>}/>
+          <Route exact path={'/user-home'} element={ <UserHome userStatus={userStatus} userRecord={userRecord} />}/>
           <Route exact path={'/user-profile'} element={userStatus ? <UserProfile userStatus={userStatus} userRecord={userRecord}/> : <Navigate to='/user-login'/>}/>
           <Route exact path={'/user-order'} element={userStatus ? <UserOrder userStatus={userStatus} userRecord={userRecord}/> : <Login/>}/>
           <Route exact path={'/edit-user-profile'} element={userStatus ? <EditUserProfile userStatus={userStatus} userRecord={userRecord}/> : <Login/>}/>
