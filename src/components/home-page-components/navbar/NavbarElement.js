@@ -37,6 +37,7 @@ display: flex;
 justify-content: center;
 align-items:center ;
 padding-right: 50px;
+border:1px solid black;
 @media screen and (max-width:800px)
 {
     flex:50%;
@@ -56,7 +57,7 @@ margin:0 auto;
 @media screen and (max-width:700px)
 {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
 }
@@ -68,7 +69,7 @@ list-style: none;
 text-decoration: none;
 margin:10px;
 @media screen and (max-width:700px){
-    display: none;
+    display: block;
 }
 `;
 export const OpenNavbarLink=styled.button`
