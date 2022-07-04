@@ -204,7 +204,7 @@ top:${(props)=>props.isCartOpen ? '80px;' : '-400px'};
 margin:0 -150px;
 transition: all .8s ease-in-out;
 @media screen and (max-width:700px){
-    margin:0 -200px;
+    margin:0 -210px;
 }
 `;
 export const CartItemMenuOne=styled.div`
