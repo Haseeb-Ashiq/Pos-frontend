@@ -5,8 +5,7 @@ import { BtnSection, CheckBox, Input, LinkSection,
     PictureSide, SignuLoginBtn, 
     SignupContainer, SignupForm,PicInput, 
     SignupLoginDiv, SignupSignin, SignupWindow, SwtichLink } 
-    from './SignupElements';
-import {Redirect} from 'react-router-dom';    
+    from './SignupElements';  
 
 function Signup() {
     const [fullname,setFullName]=useState('');

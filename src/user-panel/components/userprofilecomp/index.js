@@ -23,7 +23,7 @@ const [user,setUser]=useState(JSON.parse(window.localStorage.getItem('clientCred
             </UserProfileHeader>
             <UserProfileBody>
                 <UserProfileLeft>
-                    <UserProfileLeftPic src={`http://localhost:5000/public/${userRecord?.empPic}`}/>
+                    <UserProfileLeftPic src={`https://food-deliver-apis.herokuapp.com/public/${userRecord?.empPic}`}/>
                 </UserProfileLeft>
                 <UserProfileRight>
                    <UserProfileRecord>
