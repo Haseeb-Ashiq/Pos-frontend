@@ -3,7 +3,7 @@ import {useDispatch,useSelector} from 'react-redux';
 import { signup } from '../../../Redux/Actions/Client.Action';
 import { BtnSection, CheckBox, Input, LinkSection, 
     PictureSide, SignuLoginBtn, 
-    SignupContainer, SignupForm, 
+    SignupContainer, SignupForm,PicInput, 
     SignupLoginDiv, SignupSignin, SignupWindow, SwtichLink } 
     from './SignupElements';
 import {Redirect} from 'react-router-dom';    
@@ -39,7 +39,7 @@ const submitform=e=>{
                    <Input value={fullname} onChange={(e)=>setFullName(e.target.value)} placeholder='Enter fullname (ex:Muhammad Ali)'/>
                    <Input value={email} onChange={(e)=>setEmail(e.target.value)} type='email' placeholder='Enter email forexaple@gmail.com'/>
                    <Input value={password} onChange={(e)=>setPassword(e.target.value)} type='password' placeholder='Enter password'/>
-                   <Input onChange={(e)=>setPicture(e.target.files[0])} type='file'/>
+                   <PicInput onChange={(e)=>setPicture(e.target.files[0])} type='file'/>
                    <BtnSection>
                       <SignupLoginDiv>
                           <SignuLoginBtn type='submit'>Signup</SignuLoginBtn>

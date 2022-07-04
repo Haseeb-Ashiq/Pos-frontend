@@ -26,6 +26,13 @@ transition:.2s ease-in;
     box-shadow:8px 8px 3px 3px #fdc500,
 -8px -8px 3px 3px rgba(255,255,255,0.5);
 }
+@media screen and (max-width:500px)
+{
+    width: 100%;
+}
+@media screen and (max-height:600px){
+    min-height: 100vh;
+}
 `;
 
 export const PictureSide=styled.div`
@@ -53,6 +60,10 @@ border-bottom-right-radius:5px;
 {
     width:100%;
 }
+
+@media screen and (max-height:600px){
+    min-height: 100%;
+}
 `;
 
 export const SignupForm = styled.div`
@@ -71,7 +82,15 @@ width:90%;
 height:50px;
 margin:10px auto;
 outline:none;
-border-radius:3px;
+border-radius:5px;
+border:2px solid #c9a73b;
+`;
+export const PicInput=styled.input`
+width:90%;
+height:50px;
+margin:10px auto;
+outline:none;
+border-radius:5px;
 `;
 
 export const CheckBox=styled.input`
@@ -90,7 +109,9 @@ width:100%;
 border:none;
 border-radius:3px;
 background:#e31837;
-text-algin:center;
+display: flex;
+justify-content: center;
+align-items: center;
 color:#fff;
 transition:.2s ease-out;
 &:hover{
@@ -117,6 +138,9 @@ align-items:center;
 // border:1px solid white;
 height:10%;
 width:90%;
+@media screen and (max-height:600px){
+    height: 20%;
+}
 `;
 
 export const SignupLoginDiv= styled.div`
