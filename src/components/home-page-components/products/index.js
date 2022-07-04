@@ -34,7 +34,7 @@ function Products({isLogedIn}) {
             product.products.map((_pro,_index)=>(<>
             {
                  <ProductCard>
-              <ProductImg src={`http://localhost:5000/public/${_pro.productPictures[0].img}`}/>
+              <ProductImg src={`https://food-deliver-apis.herokuapp.com/public/${_pro.productPictures[0].img}`}/>
                 <ProductInfo>
                   <ProductTitle>{_pro.name}</ProductTitle>
                   {/* <ProductDesc>{_pro?.description.substr(1,50)}</ProductDesc> */}

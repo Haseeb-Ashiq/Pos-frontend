@@ -105,7 +105,7 @@ function UserOrderDetails() {
                                          <>
                                           <TableRow>
                                      <TableCell>{++index}</TableCell>
-                                     <TableCell><img src={`http://localhost:5000/public/${item.product_img}`} style={{height:'50px',width:'50px'}}/></TableCell>
+                                     <TableCell><img src={`https://food-deliver-apis.herokuapp.com/public/${item.product_img}`} style={{height:'50px',width:'50px'}}/></TableCell>
                                      <TableCell>{item.name}</TableCell>
                                      <TableCell>{item.qty}</TableCell>
                                      <TableCell>${item.price}</TableCell>
